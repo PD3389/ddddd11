@@ -9,8 +9,8 @@ zrobWierszRvest<- function(w,wektorLinkow){
  
   newUrl<-wektorLinkow[w]
   page<-read_html(newUrl)
-  
-  cena<-page%>%html_nodes(xpath='/html/body/div[4]/main/div[2]/div[1]/div[1]/div/div[5]/div[2]/div[2]/div/span[1]')%>%html_text()
+
+  cena<-page %>% html_node(xpath = "//div[@class='offer-price']") %>% html_attr("data-price")
 
   v<-page %>% xml_find_all('/html/body/div[4]/main/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/ul[1]/*/span')%>%html_text2()%>%na.omit()
   v1<-page %>% xml_find_all('/html/body/div[4]/main/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/ul[2]/*/span')%>%html_text2()%>%na.omit()
